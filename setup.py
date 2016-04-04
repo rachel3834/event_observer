@@ -18,7 +18,10 @@ exec(open('scripts/version.py').read())
 
 # Command-line tools; we're not using "entry_points" for now due to
 # a bug in pip which turns all the tools into lowercase
-scripts = ['scripts/event_observer.py']
+scripts = ['scripts/event_observer.py',
+           'scripts/observer_classes.py',
+           'scripts/utilities.py
+           ]
 
 setup(name='event_observer',
       version=__version__,
