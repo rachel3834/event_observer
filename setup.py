@@ -20,8 +20,7 @@ exec(open('scripts/version.py').read())
 # a bug in pip which turns all the tools into lowercase
 scripts = ['scripts/event_observer.py',
            'scripts/observer_classes.py',
-           'scripts/utilities.py
-           ]
+           'scripts/utilities.py' ]
 
 setup(name='event_observer',
       version=__version__,
