@@ -41,7 +41,8 @@ def observation_sequence( target_params, simulate=True ):
         for sequence in sequence_list:
             obs_request = observer_classes.ObsRequest(params=target_params)
             obs_request.build_request( sequence )
-            status = obs_request.submit_request(simulate=simulate)
+            status = obs_request.submit_request(sequence['obs_type'], \
+                                            simulate=simulate)
             submit_status[obs_request.group_id] = status
     else:
         submit_status = [ status ]
@@ -99,7 +100,7 @@ def resolve_obs_sequence( target_params ):
 
 
 if __name__ == '__main__':
-    simulate = True
+    simulate = False
     if len(argv) > 1:
         if 'simulate' in argv[1] and 'false' in argv[1]:
             simulate = False

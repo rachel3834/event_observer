@@ -163,9 +163,14 @@ class ObsRequest:
         
         self.jur = json.dumps(ur)
             
-    def get_observer_params(self):
+    def get_observer_params(self,obs_type):
         
-        observer_file = path.join( path.expanduser('~'), '.obscontrol', 'observer.params' )
+        if obs_type == 'TARGET_OF_OPPORTUNITY':
+            observer_file = path.join( path.expanduser('~'), '.obscontrol', \
+                                        'observer.params.too' )
+        else:
+            observer_file = path.join( path.expanduser('~'), '.obscontrol', \
+                                        'observer.params' )
         params = { 'username': None, 'password': None, 'proposal': None }        
         if path.isfile( observer_file ) == False:
             msg = 'ERROR: No observer authentication, cannot submit observation requests'
@@ -182,9 +187,9 @@ class ObsRequest:
             msg = 'OK'
         return msg, params
         
-    def submit_request(self,simulate=True):
+    def submit_request(self,obs_type,simulate=True):
         
-        (msg,params) = self.get_observer_params()
+        (msg,params) = self.get_observer_params(obs_type)
         
         if 'OK' in msg:
             if simulate == False:
