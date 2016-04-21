@@ -14,7 +14,7 @@ from datetime import datetime, timedelta
 #                           EVENT OBSERVER
 ############################################################################
 
-def observation_sequence( target_params, simulate=True ):
+def observation_sequence( target_params, simulate=True, log=None ):
     """Function to submit a pre-set sequence of observations to the LCOGT
     network.
     Inputs:
@@ -35,6 +35,14 @@ def observation_sequence( target_params, simulate=True ):
         for all requested observations
     """
     
+    if log != None:
+        log.write('Event Observer\n')
+        log.write('  Triggering observation sequence with parameters: \n')
+        for key, value in target_params.items():
+            log.write('  '+str(key)+' = '+str(value)+'\n')
+        log.write('  Simulate flag = ' + str(simulate)+' ' + \
+                        str(type(simulate))+'\n')
+        
     (status, sequence_list) = resolve_obs_sequence( target_params )
     if status == 'OK':
         submit_status = {}
