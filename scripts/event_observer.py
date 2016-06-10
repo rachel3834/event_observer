@@ -66,7 +66,7 @@ def resolve_obs_sequence( target_params ):
     # Queue: ( 4xSDSS-i, 4xBessell-V ) at an increasing cadence series
     if target_params['obs_sequence'] == 'short-te':
         tstart = datetime.utcnow() + timedelta(seconds=(5.0*60.0))
-        tend = tstart + timedelta(seconds=(2.0*60.0*60.0))
+        tend = tstart + timedelta(seconds=(12.0*60.0*60.0))
         ToO = True
         if ToO == True:
             sequence1 = { 
